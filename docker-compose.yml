@@ -1,0 +1,24 @@
+services:
+  web-server:
+    container_name: web-server
+    build: web/
+    ports: 
+      - "8080:8080"
+    networks:
+      labnet:
+        ipv4_address: 10.0.0.3
+  attack-box:
+    container_name: attack-box
+    image: "kalilinux/kali-rolling"
+    command: ["sleep","infinity"]
+    networks:
+      labnet:
+         ipv4_address: 10.0.0.7
+
+networks:
+  labnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.0.0.0/24
+          gateway: 10.0.0.254
