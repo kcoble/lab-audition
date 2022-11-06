@@ -11,7 +11,7 @@
 
 ### Configure the Kali Attack Box
 + `docker exec -it $(docker ps -aqf "name=attack-box") /bin/bash`
-+ In the interactive shell, type `apt update && apt -y install kali-linux-headless`
++ In the interactive shell, type `apt update && apt -y install netcat-traditional curl`
 
 ## CHALLENGES
 ## Scenario
