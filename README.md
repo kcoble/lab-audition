@@ -5,7 +5,8 @@
 + docker && docker compose
 
 ## SETUP THE ENVIRONMENT
-+ `git clone `
++ `git clone https://github.com/kcoble/lab-audition`
++ `cd lab-audition`
 + `docker compose up`
 
 ### Configure the Kali Attack Box
